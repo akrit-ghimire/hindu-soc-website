@@ -1,0 +1,136 @@
+.c-support {
+    padding: 6rem var(--padding-outer);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--sun-darkest);
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+@media screen and (max-width: 450px) {
+    .hand {
+        left: 50% !important;
+        transform: translateX(-72%) !important;
+    }
+}
+
+.c-support h1, .c-support h2, .c-support p, .c-support a, .c-support .or, .c-support .email-container {
+    max-width: 550px;
+    width: 100%;
+}
+.c-support .frames {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    max-width: 100%;
+    background-color: var(--sun-primary);
+}
+.frames img {
+    bottom: -100px;
+}
+
+.c-support h1 {
+    font-weight: 700;
+    font-size: var(--sub-heading-size);
+}
+.c-support p {
+    font-size: var(--para-size);
+    line-height: calc(var(--para-size) * 1.6);
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+/* 
+<div class="email-container">
+    <div class="email">
+        <p>edinburghhindusociety@gmail.com</p>
+    </div>
+    <div class="copy">
+        <img src="">
+    </div>
+</div>
+*/
+.email-container {
+    background-color: var(--sun-dark);
+    border-radius: var(--border-radius);
+    padding: var(--padding-inner);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 2.5rem;
+}
+.email-container p {
+    margin: 0 !important;
+    color: var(--sun-primary);
+}
+.email {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 450px) {
+    .email p { 
+        font-size: 1.2rem;
+    }
+}
+.copy {
+    width: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--sun-light);
+    cursor: pointer;
+}
+.copy p {
+    color: var(--sun-dark);
+    font-weight: 700;
+}
+.copy:hover { opacity: .8; }
+.copy:active { opacity: .7; }
+
+/* 
+<div class="or">
+    <div class="line"></div>
+    <span>or</span>
+    <div class="line"></div>
+</div>
+*/
+.or {
+    display: flex;
+    margin: 2.5rem 0;
+    justify-content: center;
+    align-items: center;
+}
+.or .line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--sun-darkest);
+}
+.or span {
+    font-size: var(--para-size);
+    font-weight: 500;
+    width: 10rem;
+}
+/* 
+<a class="buymeacoffee">
+    <img src="">
+</a>
+*/
+.buymeacoffee {
+    background-color: #FFDD00;
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding-inner) * 1.1);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 2.5rem;
+    text-decoration: none;
+    color: white;
+}
+.buymeacoffee img {
+    object-fit: contain;
+    height: 2rem;
+}
+.buymeacoffee:hover { opacity: .8 }
+.buymeacoffee:active { opacity: .7; }

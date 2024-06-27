@@ -1,0 +1,134 @@
+.lotus {
+    position: absolute;
+    z-index: 7;
+    width: 30vw;
+    height: auto;
+}
+@media screen and (max-width: 800px) {
+    .lotus {
+        width: 200px;
+    }
+}
+
+.c-hero {
+    height: 110vh;
+    width: 100%;
+    background-color: var(--purple-sun);
+    overflow: hidden;
+}
+
+.c-about-us {
+    background-image: url('/assets/icons-svg/art/about/background.svg');
+    background-repeat: repeat;
+    background-position: center top;
+    background-size: auto;
+    padding: 0 var(--padding-outer);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+.c-about-us * {
+    max-width: 800px;
+}
+.c-about-us .lotus-one {
+    position: absolute;
+    top: -50px;
+    left: -10vw;
+}
+.c-about-us .lotus-two {
+    position: absolute;
+    top: -50px;
+    right: -10vw;
+}
+.c-about-us .lotus-four {
+    position: absolute;
+    right: -10vw;
+    bottom: 2rem;
+}
+.c-about-us .lotus-three {
+    position: absolute;
+    left: -10vw;
+    bottom: 2rem;
+}
+
+.c-about-us h1 {
+    font-weight: 700;
+    font-size: var(--sub-heading-size);
+    margin-bottom: 2rem;
+    margin-top: 14rem;
+}
+.c-about-us p {
+    font-size: var(--para-size);
+    line-height: calc(var(--para-size) * 1.6);
+}
+
+.cards {
+    width: 100%;
+    margin-top: 14rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--padding-outer);
+    margin-bottom: 18rem;
+}
+
+@media screen and (max-width: 600px) {
+    .cards { 
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    width: 100%;
+    background-color: var(--purple-light);
+    border-radius: var(--border-radius);
+    padding: 0 calc(var(--padding-inner) * .75);
+    display: flex;
+    flex-direction: column;
+}
+.card h2 {
+    font-weight: 700;
+}
+.card h2, .card p {
+    margin-top: calc(var(--padding-inner) + .35rem) !important;
+    margin-bottom: calc(var(--padding-inner) + .35rem) !important;
+}
+.img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    width: 100%;
+}
+
+.img-container::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* This creates the 1:1 aspect ratio */
+}
+
+.img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+}
+
+.c-footer {
+    background-color: var(--purple-darkest);
+    padding: 2rem var(--padding-outer);
+    padding-bottom: 6rem;
+    text-align: center;
+    color: var(--purple-primary);
+}
+.c-footer p {
+    margin: .5rem 0;
+    font-weight: 300;
+    font-size: var(--para-size);
+}
+.c-footer p:last-of-type {
+    margin-bottom: 0;
+}

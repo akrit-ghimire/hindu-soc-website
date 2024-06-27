@@ -1,0 +1,109 @@
+{
+  "name": "Edinburgh Hindu Soc Events App",
+  "short_name": "Hindu Soc Events",
+  "start_url": "/events.html",
+  "icons": [
+    {
+      "src": "assets/icons/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Homepage",
+      "short_name": "Home",
+      "description": "View the homepage.",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/assets/icons-svg/navbar/purple-home.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        },
+        {
+          "src": "/assets/icons/shortcuts_96x96/purple-home-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Events Page",
+      "short_name": "Events",
+      "description": "View upcoming events.",
+      "url": "/events.html",
+      "icons": [
+        {
+          "src": "/assets/icons-svg/navbar/cyan-calendar.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        },
+        {
+          "src": "/assets/icons/shortcuts_96x96/cyan-calendar-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Our Socials",
+      "short_name": "Socials",
+      "description": "View links to our other social media pages.",
+      "url": "/socials.html",
+      "icons": [
+        {
+          "src": "/assets/icons-svg/navbar/indigo-share.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        },
+        {
+          "src": "/assets/icons/shortcuts_96x96/indigo-share-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "View our contact email and our donate button.",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "/assets/icons-svg/navbar/sun-text.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        },
+        {
+          "src": "/assets/icons/shortcuts_96x96/sun-text-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "theme_color": "#000",
+  "bacground_color": "#f23",
+  "display": "standalone",
+  "orientation": "portrait"
+}

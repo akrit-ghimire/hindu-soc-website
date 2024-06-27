@@ -1,0 +1,35 @@
+6.17-7.11 8.13-10.01 15.17-17.12 18.16-19.12 8.00-9.35 13.30-14.00 14.24-16.28 18.00-18.54 12.33-14.51 15.00-15.55 17.11-20.03 10.47-13.00 17.38-18.38 6.12-9.57 15.50-17.23 8.45-10.40 11.01-12.47 15.21-
+
+
+todo
+# meta desc of each page #
+# navigate all pages #
+# home page #
+# about section #
+# events page #
+# socials page #
+# contact page #
+- abouts photos
+- contact buy me a coffee
+# contact save to clipboard #
+# home page parallax #
+# about page lotus animation #
+# soicals page clouds #
+# events page waves #
+# contact page clouds #
+# events page retrieve calendar events and display #
+# set up background tasks #
+# events page notification on new event #
+# events page remind once event happening #
+# events page save reminders # 
+# website retrieve static section data from excel sheet #
+# events page display download app button if on browser
+- google seo
+# made by akrit console message #
+- change app.js server allowed origin
+# shortcut icons #
+# loading screen #
+
+
+// icon generator
+// npx pwa-asset-generator logo.svg ./assets/icons -b "linear-gradient(90deg, #fe198f, #fec80a);" -p "10%" -m "manifest.json" -i "index.html" -t png -f -w

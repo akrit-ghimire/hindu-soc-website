@@ -1,0 +1,476 @@
+:root {
+    /* purple */
+    --purple-darkest: #30113E;
+    --purple-dark: #412051;
+    --purple-light: #5A3272;
+    --purple-primary: #AD5C8A;
+    --purple-sun: #f2cb9b;
+
+    /* cyan */
+    --cyan-darkest: #12373C;
+    --cyan-dark: #204B51;
+    --cyan-light: #2A5F64;
+    --cyan-lightest: #408386;
+    --cyan-primary: #BCF6DB;
+
+    /* indigo */
+    --indigo-darkest: #191239;
+    --indigo-dark: #282051;
+    --indigo-light: #353070;
+    --indigo-primary: #A65D96;
+
+    /* sun */
+    --sun-darkest: #0D3112;
+    --sun-dark: #205127;
+    --sun-light: #A2AF5D;
+    --sun-primary: #FCEF8D;
+
+    /* styles */
+    --border-radius: 8px;
+    --heading-size: 2.1rem;
+    --sub-heading-size: 1.6rem;
+    --para-size: 1.4rem;
+    --padding-outer: 1.5rem;
+    --padding-inner: .75rem;
+}
+
+.hidden {
+    display: none;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 300;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+.hide {
+    opacity: 0;
+    filter: blur(5px);
+    /* transform: translateY(50px); */
+    transition: all .5s;
+}
+.show {
+    opacity: 1;
+    filter: blur(0);
+    /* transform: translateY(0); */
+}
+@media(prefers-reduced-modion) {
+    .hide {
+        transition: none;
+    }
+}
+
+.background {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.background * {
+    height: 100vh;
+    width: 100%;
+}
+
+.bg-purple { background-color: var(--purple-primary); }
+.bg-lotus { background-color: var(--purple-dark); }
+.bg-indigo { background-color: var(--indigo-dark); }
+.bg-cyan { background-color: var(--cyan-primary); }
+.bg-sun { background-color: var(--sun-primary); }
+
+.content {
+    width: 100%;
+    height: auto;
+}
+
+.content .c {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--padding-outer);
+    padding-bottom: calc(calc(var(--padding-outer) * 2) + 3.8rem);
+}
+
+.nav {
+    position: fixed;
+    z-index: 95;
+    /* width: calc(100% - calc(2 * var(--padding-outer))); */
+    /* min-width: 500px; */
+    height: auto;
+    padding: var(--padding-inner) calc(var(--padding-inner) * 3);
+    border-radius: var(--border-radius);
+    bottom: var(--padding-outer);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(var(--padding-inner) * 2);
+}
+.nav a {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.nav a span {
+    font-size: var(--para-size);
+    font-weight: 600;
+}
+.nav a img {
+    display: none;
+    height: var(--sub-heading-size);
+}
+.nav-purple { background-color: var(--purple-darkest); }
+.nav-purple span { color: var(--purple-light); }
+.nav-purple span:hover { color: var(--purple-primary) }
+.nav-purple .active span { color: var(--purple-primary) !important; cursor: default; }
+
+.nav-cyan { background-color: var(--cyan-darkest); }
+.nav-cyan span { color: var(--cyan-light); }
+.nav-cyan span:hover { color: var(--cyan-primary) }
+.nav-cyan .active span { color: var(--cyan-primary) !important; cursor: default; }
+
+.nav-indigo { background-color: var(--indigo-darkest); }
+.nav-indigo span { color: var(--indigo-light); }
+.nav-indigo span:hover { color: var(--indigo-primary) }
+.nav-indigo .active span { color: var(--indigo-primary) !important; cursor: default; }
+
+.nav-sun { background-color: var(--sun-darkest); }
+.nav-sun span { color: var(--sun-light); }
+.nav-sun span:hover { color: var(--sun-primary) }
+.nav-sun .active span { color: var(--sun-primary) !important; cursor: default; }
+
+@media screen and (max-width: 600px) {
+    .nav a span { display: none; }
+    .nav a img { display: block; }
+}
+
+.scroll::-webkit-scrollbar { width: 12px; }
+.scroll::-webkit-scrollbar-thumb { border-radius: 10px; }
+.scroll { scroll-behavior: smooth; }
+
+.scroll-lotus::-webkit-scrollbar-track { background: var(--purple-darkest); }
+.scroll-lotus::-webkit-scrollbar-thumb { border: 3px solid var(--purple-darkest); background-color: var(--purple-light); }
+.scroll-lotus::-webkit-scrollbar-thumb:hover { background-color: var(--purple-primary); }
+
+.scroll-cyan::-webkit-scrollbar-track { background: var(--cyan-primary); }
+.scroll-cyan::-webkit-scrollbar-thumb { border: 3px solid var(--cyan-primary); background-color: var(--cyan-light); }
+.scroll-cyan::-webkit-scrollbar-thumb:hover { background-color: var(--cyan-dark); }
+
+.scroll-sun::-webkit-scrollbar-track { background: var(--sun-primary); }
+.scroll-sun::-webkit-scrollbar-thumb { border: 3px solid var(--sun-primary); background-color: var(--sun-light); }
+.scroll-sun::-webkit-scrollbar-thumb:hover { background-color: var(--sun-dark); }
+
+.scroll-indigo::-webkit-scrollbar-track { background: var(--indigo-darkest); }
+.scroll-indigo::-webkit-scrollbar-thumb { border: 3px solid var(--indigo-darkest); background-color: var(--indigo-light); }
+.scroll-indigo::-webkit-scrollbar-thumb:hover { background-color: var(--indigo-primary); }
+
+/* 
+    <div class="banner banner-lotus">
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, enim! Doloremque, incidunt. Blanditiis ducimus amet ea aperiam cupiditate facere cumque?</p>
+            <button>Install</button>
+        </div>
+        <button>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+    </div>
+*/
+
+.banner {
+    width: 100%;
+    padding: var(--padding-inner);
+    display: flex;
+    gap: var(--padding-inner);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 90;
+}
+.banner .content {
+    display: flex;
+    gap: var(--padding-inner);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: var(--para-size);
+    text-align: center;
+    line-height: calc(var(--para-size) * 1.6);
+}
+.banner .icon {
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: var(--padding-outer);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 900px) { 
+    .banner .icon {
+        position: initial;
+        transform: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .banner {
+        flex-direction: column;
+    }
+    .banner .content {
+        flex-direction: column;
+    }
+    .banner .content button {
+        width: 100%;
+    }
+}
+.banner .content button {
+    border: none;
+    cursor: pointer;
+    padding: calc(var(--padding-inner) * .75) var(--padding-inner);
+    font-size: var(--para-size);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+}
+.banner .content button:hover { opacity: .8; }
+.banner .content button:active { opacity: .7; }
+
+.banner-lotus .content button { background-color: var(--purple-primary); color: white; }
+.banner-lotus { background-color: var(--purple-darkest); }
+.banner-lotus .icon svg { stroke: var(--purple-light) }
+.banner-lotus .icon svg:hover { stroke: var(--purple-primary); }
+.banner-lotus .icon svg:active { opacity: .8; }
+
+/* 
+
+<div class="modal">
+    <h2>Notification Permission Needed</h2>
+    <p>To send reminders of events to you, we need you to allow us to send notifications to your device.</p>
+    <div class="buttons">
+        <button>Close</button>
+        <button>Accept</button>
+    </div>
+</div>
+*/
+.modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--padding-outer);
+    animation: fade-in .3s;
+}
+@keyframes fade-in {
+    0% { background-color: rgba(0, 0, 0, 0); }
+    100% { background-color: rgba(0, 0, 0, .8); }
+}
+.modal {
+    padding: calc(var(--padding-outer) * 1.4) var(--padding-outer);
+    border-radius: var(--border-radius);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-outer);
+}
+.modal h2 {
+    color: white;
+    font-weight: 500;
+    font-size: var(--para-size);
+}
+.modal p {
+    font-size: var(--para-size);
+    margin: 0;
+    line-height: calc(var(--para-size) * 1.4);
+}
+.modal .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+.modal .buttons button {
+    border: none;
+    padding: calc(var(--padding-inner) * .75) var(--padding-inner);
+    border-radius: var(--border-radius);
+    font-size: var(--para-size);
+    font-weight: 500;
+    cursor: pointer;
+    color: white;
+}
+.modal .buttons button:hover { opacity: .8; }
+.modal .buttons button:active { opacity: .7; }
+
+.modal-lotus { background-color: var(--purple-darkest); }
+.modal-lotus p { color: var(--purple-primary); }
+.modal-lotus .buttons button { background-color: var(--purple-dark); }
+.modal-lotus .buttons button:last-of-type { background-color: var(--purple-light); }
+
+.modal-cyan { background-color: var(--cyan-darkest); }
+.modal-cyan p { color: var(--cyan-primary); }
+.modal-cyan .buttons button { background-color: var(--cyan-dark); }
+.modal-cyan .buttons button:last-of-type { background-color: var(--cyan-light); }
+
+/* 
+for the artwork
+*/
+.frames {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.frames img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 110%;
+    height: auto;
+}
+@media screen and (max-width: 1650px) {
+    .frames img {
+        width: auto;
+        height: 101%;
+    }
+}
+.l-to-r {
+    animation: left-to-right 120s linear infinite;
+}
+.r-to-l {
+    animation: right-to-left 120s linear infinite;
+}
+.blink {
+    animation: blinker 5s ease-in-out infinite;
+}
+.blink-delayed {
+    animation: blinker 5s ease-in-out infinite;
+    animation-delay: 2.5s;
+}
+.wave-one { animation: wave 7s ease-in-out 0s infinite; }
+.wave-two { animation: wave 7s ease-in-out .5s infinite; }
+.wave-three { animation: wave 7s ease-in-out 1s infinite; }
+.wave-four { animation: wave 7s ease-in-out 1.5s infinite; }
+.wave-five { animation: wave 7s ease-in-out 2s infinite; }
+
+@keyframes blinker {
+    0% { opacity: .9;}
+    50% { opacity: .1;}
+    75% { opacity: 1; }
+}
+@keyframes left-to-right {
+    0% {
+        transform: translate3d(-50%, 0, 0);
+        display: block;
+    }
+    50% {
+        transform: translate3d(100%, 0, 0);
+        display: none;
+    }
+    75% {
+        transform: translate3d(0%, 0, 0);
+        display: none;
+    }
+}
+@keyframes right-to-left {
+    0% {
+        transform: translate3d(-50%, 0, 0);
+        display: block;
+    }
+    50% {
+        transform: translate3d(-100%, 0, 0);
+        display: none;
+    }
+    75% {
+        transform: translate3d(50%, 0, 0);
+        display: none;
+    }
+}
+@keyframes wave {
+    0% { transform: translate3d(-50%, 0%, 0); }
+    50% { transform: translate3d(-50%, 20%, 0); }
+    100% { transform: translate3d(-50%, 0%, 0); }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .l-to-r,
+    .r-to-l,
+    .blink,
+    .blink-delayed,
+    .wave-one,
+    .wave-two,
+    .wave-three,
+    .wave-four,
+    .wave-five {
+        animation: none;
+    }
+}
+
+/* Disable animations on low-end devices */
+.disable-animations .l-to-r,
+.disable-animations .r-to-l,
+.disable-animations .blink,
+.disable-animations .blink-delayed,
+.disable-animations .wave-one,
+.disable-animations .wave-two,
+.disable-animations .wave-three,
+.disable-animations .wave-four,
+.disable-animations .wave-five {
+    animation: none;
+}
+
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 92;
+    display: grid;
+    opacity: 1;
+    transition: .5s;
+    justify-content: center;
+    align-items: center;
+}
+.loading-lotus { background-color: var(--purple-darkest); }
+.loading-cyan { background-color: var(--cyan-darkest); }
+.loading-indigo { background-color: var(--indigo-darkest); }
+.loading-sun { background-color: var(--sun-darkest); }
+.loading img {
+    width: 90px;
+}
+.loading-hide {
+    opacity: 0;
+}

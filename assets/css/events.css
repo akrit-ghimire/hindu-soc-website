@@ -1,0 +1,89 @@
+.c-events {
+    padding: calc(6rem - var(--padding-inner)) var(--padding-outer);
+    padding-bottom: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.c-events .frames {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    max-width: 100%;
+    background-color: var(--cyan-primary);
+}
+.c-events h1 {
+    font-weight: 700;
+    font-size: var(--sub-heading-size);
+    background-color: var(--cyan-light);
+    border-radius: var(--border-radius);
+    padding: var(--padding-inner) calc(var(--padding-inner) * 4);
+}
+.c-events h2 {
+    font-weight: 700;
+    font-size: var(--para-size);
+    line-height: calc(var(--para-size) * 1.2);
+}
+.c-events p, .events .buttons .button {
+    font-size: var(--para-size);
+    line-height: calc(var(--para-size) * 1.6);
+}
+
+.events {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: var(--padding-inner);
+    margin-top: var(--padding-outer);
+    width: 100%;
+    max-width: 800px;
+}
+@media screen and (max-width: 800px) {
+    .events { 
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+}
+
+.event {
+    background-color: var(--cyan-lightest);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: 100%;
+}
+.event .content {
+    padding: calc(var(--padding-outer) * 2) var(--padding-outer);
+    padding-bottom: calc(calc(var(--padding-outer) * 2) - 1rem);
+}
+.event .content * {
+    width: 100%;
+    text-align: start;
+    margin: 0;
+}
+.event .details {
+    background-color: var(--cyan-light);
+    padding: var(--padding-outer);
+}
+.event .details p {
+    margin: 0 !important;
+    text-align: start;
+}
+.event .buttons {
+    display: flex;
+}
+.event .buttons .button {
+    width: 100%;
+    padding: calc(var(--padding-inner) * .75) var(--padding-inner);
+    cursor: pointer;
+}
+.button:hover { opacity: .8; }
+.button:active { opacity: .7; }
+.btn-light { background-color: var(--cyan-lightest); }
+.btn-dark { background-color: var(--cyan-light); }
+.btn-darkest { background-color: var(--cyan-dark); }
