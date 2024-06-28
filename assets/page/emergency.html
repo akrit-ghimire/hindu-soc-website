@@ -84,7 +84,7 @@
 
             // api
             try {
-                const res = await fetch(`http://127.0.0.1:5001/hindu-soc-push-notifications/us-central1/emergency?title=${title_val}&message=${message_val}&passkey=${passkey_val}`)
+                const res = await fetch(`https://emergency-6q6qb65uba-uc.a.run.app?title=${title_val}&message=${message_val}&passkey=${passkey_val}`)
                 const status = await res.text()
 
                 if (status == "SUCCESS") {
