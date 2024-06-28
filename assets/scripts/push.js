@@ -40,7 +40,7 @@ const subscribe = async () => {
         });
 
         const response = await save_subscription(subscription);
-        console.log(response)
+        // console.log(response)
 
     } catch (error) {
         console.error('Subscription failed:', error);

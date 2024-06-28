@@ -23,5 +23,7 @@ fetch_data().then((data) => {
     data.committee.forEach(member => {
         cards.append(create_card(member))
     });
+}).then(() => {
+    start_observer()
 })
 
