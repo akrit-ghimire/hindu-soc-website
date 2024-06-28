@@ -1,7 +1,7 @@
 const API_KEY = 'AIzaSyBrPtGjta1zxlx_orW-8l7RwoYa_S0Umnc';
 const SHEET_ID = '17BIvdQv4fxlrJmkjEGXIEsubDEQEBN06Z3VJ3HrWnBY';
 const CACHE_KEY = 'about_section';
-const CACHE_EXPIRY_TIME = 1000 * 60 * 60; // 1 hr
+const CACHE_EXPIRY_TIME = 1000 * 60 * 60 * 24 * 3; // 3 days
 
 const fetch_sheet = async (sheet) => {
     try {

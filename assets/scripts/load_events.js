@@ -2,7 +2,7 @@ const API_KEY = 'AIzaSyBrPtGjta1zxlx_orW-8l7RwoYa_S0Umnc';
 const CALENDAR_ID = '16732179e20e5db2e61d0e63eed66643aec505b1c7ec8e5bce0b72744a68b898@group.calendar.google.com';
 const MAX_RESULTS = 3;
 const CACHE_KEY = 'upcoming_events';
-const CACHE_EXPIRY_TIME = 1000 * 60 * 60; // 1 hr
+const CACHE_EXPIRY_TIME = 1000 * 60 * 60 * 12; // 12 hr
 
 const fetch_calendar_events = async () => {
     try {

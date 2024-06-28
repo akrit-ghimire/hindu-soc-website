@@ -20,7 +20,7 @@ console.log(
 )
 console.log("")
 console.log(
-"%c                   email: akrit.ghimire.email@gmail.com", 
+'%c        LinkedIn: https://www.linkedin.com/in/akrit-ghimire-3ba38027a/', 
 "color: lime"
 )
 console.log("")
