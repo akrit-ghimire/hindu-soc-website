@@ -147,22 +147,22 @@ body {
 .nav-purple { background-color: var(--purple-darkest); }
 .nav-purple span { color: var(--purple-light); }
 .nav-purple span:hover { color: var(--purple-primary) }
-.nav-purple .active span { color: var(--purple-primary) !important; cursor: default; }
+.nav-purple .active span { color: var(--purple-primary) !important; }
 
 .nav-cyan { background-color: var(--cyan-darkest); }
 .nav-cyan span { color: var(--cyan-light); }
 .nav-cyan span:hover { color: var(--cyan-primary) }
-.nav-cyan .active span { color: var(--cyan-primary) !important; cursor: default; }
+.nav-cyan .active span { color: var(--cyan-primary) !important; }
 
 .nav-indigo { background-color: var(--indigo-darkest); }
 .nav-indigo span { color: var(--indigo-light); }
 .nav-indigo span:hover { color: var(--indigo-primary) }
-.nav-indigo .active span { color: var(--indigo-primary) !important; cursor: default; }
+.nav-indigo .active span { color: var(--indigo-primary) !important; }
 
 .nav-sun { background-color: var(--sun-darkest); }
 .nav-sun span { color: var(--sun-light); }
 .nav-sun span:hover { color: var(--sun-primary) }
-.nav-sun .active span { color: var(--sun-primary) !important; cursor: default; }
+.nav-sun .active span { color: var(--sun-primary) !important; }
 
 @media screen and (max-width: 600px) {
     .nav a span { display: none; }
