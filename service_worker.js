@@ -43,7 +43,7 @@ workbox.routing.registerRoute(
     })
 )
 
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', function (event) {
     event.notification.close();
     event.waitUntil(
         clients.openWindow('/events.html')
@@ -54,22 +54,34 @@ self.addEventListener('message', event => {
     if (Notification.permission !== 'granted') return
 
     if (event.data && event.data.type === 'notify') {
-      const data = event.data.payload
-  
-      const title = data.title
-    
-      const options = {
-        body: data.text,
-        icon: '/assets/icons/favicon-196.png',
-      }
-  
-      self.registration.showNotification(title, options)
+        const data = event.data.payload
+
+        const title = data.title
+
+        const options = {
+            body: data.text,
+            icon: '/assets/icons/favicon-196.png',
+        }
+
+        self.registration.showNotification(title, options)
     }
-  })
+})
 
 self.addEventListener('push', (event) => {
     const instruction = event.data.text()
 
     if (instruction == 'remind') remind()
     else if (instruction == 'new') new_event()
+
+    try {
+        const message = event.data.json()
+        
+        if (message.header !== 'EMERGENCY') return
+
+        const options = {
+            body: message.message,
+            icon: '/assets/icons/favicon-196.png',
+        }
+        self.registration.showNotification(message.title, options)
+    } catch {}
 })

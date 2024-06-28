@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Members Only</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/emergency.css">
+    <script src="../scripts/watermark.js"></script>
+    <link rel="icon" type="image/png" sizes="196x196" href="../icons/favicon-196.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="scroll scroll-lotus">
+    <div class="container">
+        <img src="../icons-svg/long-logo.svg" alt="">
+        <p>This is an emergency message to all app users. Upon submit, your IP address will be recorded, in the case of
+            misuse you can be tracked.</p>
+        <p>Title:</p>
+        <input type="text" name="title" id="title">
+        <p>Message:</p>
+        <textarea name="message" id="message"></textarea>
+        <p>12 Digit Passkey:</p>
+        <input type="text" name="passkey" oninput="formatNumber12Digit()" id="passkey">
+        <label for="agree">
+            <input type="checkbox" id="agree" name="agree">
+            I agree to the above terms, have consented the use of my IP and confirm that the message above has been
+            written with valid authority and the content of which does not violate any EUSA policies.
+        </label>
+        <button disabled>submit</button>
+    </div>
+    <script>
+        
+        const title = document.getElementById('title')
+        const message = document.getElementById('message')
+        const passkey = document.getElementById('passkey')
+        const agree = document.getElementById('agree')
+        const submit = document.querySelector('button')
+
+        function formatNumber12Digit() {
+            let inputValue = passkey.value.replace(/\D/g, ''); // Remove non-numeric characters
+            let formattedValue = '';
+            for (let i = 0; i < inputValue.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' '; // Add a space every 4 digits
+                }
+                formattedValue += inputValue[i];
+            }
+            passkey.value = formattedValue.trim().slice(0, 14);
+        }
+
+        agree.onclick = () => {
+            submit.disabled = !agree.checked
+        }
+        submit.onclick = async () => {
+            const title_val = title.value
+            const message_val = message.value
+            const passkey_val = passkey.value.replace(/ /g, '')
+
+            title.classList.remove('error')
+            message.classList.remove('error')
+            passkey.classList.remove('error')
+
+            if (title_val.length < 3) {
+                title.classList.add('error')
+                return
+            }
+            if (message_val.length < 3) {
+                message.classList.add('error')
+                return
+            }
+            if (passkey_val.length !== 12) {
+                passkey.classList.add('error')
+                return
+            }
+
+            submit.disabled = true
+            agree.disabled = true
+
+            submit.innerText = 'sending...'
+
+            // api
+            try {
+                const res = await fetch(`http://127.0.0.1:5001/hindu-soc-push-notifications/us-central1/emergency?title=${title_val}&message=${message_val}&passkey=${passkey_val}`)
+                const status = await res.text()
+
+                if (status == "SUCCESS") {
+                    submit.innerText = 'message sent'
+                    title.value = ''
+                    message.value = ''
+                    passkey.value = ''
+                } else {
+                    submit.innerText = 'failed to send'
+                }
+            } catch {
+                submit.innerText = 'failed to send'
+            }
+
+            setTimeout(() => {
+                agree.disabled = false
+                agree.checked = false
+                submit.innerText = 'submit'
+            }, 3000)
+
+        }
+
+    </script>
+</body>
+
+</html>

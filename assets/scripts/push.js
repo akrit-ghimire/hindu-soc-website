@@ -12,12 +12,12 @@ const urlB64ToUint8Array = (base64String) => {
 
 const save_subscription = async (subscription) => {
     try {
-        const res = await fetch('http://localhost:4000/save-subscription', {
+        const res = await fetch('http://127.0.0.1:5001/hindu-soc-push-notifications/us-central1/subscribe', {
             method: 'post',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(subscription)
         })
-        if (res) return await res.json()
+        if (res) return await res.text()
         return null
 
     } catch {
@@ -40,6 +40,7 @@ const subscribe = async () => {
         });
 
         const response = await save_subscription(subscription);
+        console.log(response)
 
     } catch (error) {
         console.error('Subscription failed:', error);
