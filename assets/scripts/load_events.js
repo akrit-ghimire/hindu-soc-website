@@ -41,7 +41,7 @@ const reformat = (fetch_results) => {
 const fetch_events = () => {
     return new Promise(async (resolve, reject) => {
         // get from cache
-        const events = await db_get('events', 'storage')
+        const events = await use_db(db_get, {key: 'events', table: 'storage'})
 
         if (events && Date.now() - events.timestamp < CACHE_EXPIRY_TIME) {
             resolve(events.data)
@@ -51,11 +51,11 @@ const fetch_events = () => {
             if (fetch_results.ok) {
                 const events_data = reformat(fetch_results.payload)
 
-                await db_update({
+                await use_db(db_update, {obj: {
                     name: 'events',
                     data: events_data,
                     timestamp: Date.now()
-                }, 'storage')
+                }, table: 'storage'})
 
                 resolve(events_data)
             }
@@ -65,7 +65,7 @@ const fetch_events = () => {
 }
 
 const new_event = async () => {
-    const client_req = await db_get('events', 'storage')
+    const client_req = await use_db(db_get, {key: 'events', table: 'storage'})
     if (!client_req) return 
 
     const client_events = client_req.data
@@ -77,11 +77,11 @@ const new_event = async () => {
 
     if (client_events[0].key == server_events[0].key) 
 
-    await db_update({ // update db with the new events list
+    await use_db(db_update, {obj: { // update db with the new events list
         name: 'events',
         data: server_events,
         timestamp: Date.now()
-    }, 'storage')
+    }, table: 'storage'})
 
     const text = happening_today(server_events[0].date) ? `${server_events[0].name} is happening today!` : `New upcoming event: ${server_events[0].name}!`
     

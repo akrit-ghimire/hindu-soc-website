@@ -1,18 +1,27 @@
 
 const sample_data = { key: 'chai and chats-thrusday 25th may', title: 'chai and chats', date: 'thursday 25th may' }
 
-let db
-const db_request = indexedDB.open("WebAppDB", 2)
+const use_db = (callback, params) => new Promise((resolve, reject) => {
+    const db_request = indexedDB.open("WebAppDB", 2)
+    
+    db_request.onerror = (e) => { 
+        reject(console.log('Error opening database: ', e)) 
+    }
+    db_request.onsuccess = async (e) => { 
+        db = e.target.result 
+        resolve(await callback(db, params))
+    }
+    db_request.onupgradeneeded = async (e) => {
+        let db = e.target.result
+        if (!db.objectStoreNames.contains('reminders')) db.createObjectStore('reminders', {keyPath: 'key'})
+        if (!db.objectStoreNames.contains('storage')) db.createObjectStore('storage', {keyPath: 'name'})
 
-db_request.onerror = (e) => { console.log('Error opening database: ', e) }
-db_request.onsuccess = (e) => { db = e.target.result }
-db_request.onupgradeneeded = (e) => {
-    let db = e.target.result
-    if (!db.objectStoreNames.contains('reminders')) db.createObjectStore('reminders', {keyPath: 'key'})
-    if (!db.objectStoreNames.contains('storage')) db.createObjectStore('storage', {keyPath: 'name'})
-}
+        resolve(await callback(db, params))
+    }
+})
 
-const db_add = (obj, table) => new Promise((resolve, reject) => {
+
+const db_add = (db, { obj, table }) => new Promise((resolve, reject) => {
     const transaction = db.transaction([table], "readwrite")
     const obj_store = transaction.objectStore(table)
 
@@ -24,7 +33,7 @@ const db_add = (obj, table) => new Promise((resolve, reject) => {
     request.onerror = () => { resolve(false) }
 })
 
-const db_update = (obj, table) => new Promise((resolve, reject) => {
+const db_update = (db, { obj, table }) => new Promise((resolve, reject) => {
     const transaction = db.transaction([table], "readwrite")
     const obj_store = transaction.objectStore(table)
 
@@ -37,7 +46,7 @@ const db_update = (obj, table) => new Promise((resolve, reject) => {
 })
 
 
-const db_delete = (key, table) => new Promise((resolve, reject) => {
+const db_delete = (db, { key, table }) => new Promise((resolve, reject) => {
     const transaction = db.transaction([table], "readwrite")
     const obj_store = transaction.objectStore(table)
 
@@ -49,7 +58,7 @@ const db_delete = (key, table) => new Promise((resolve, reject) => {
     request.onsuccess = () => { resolve(true) }
 })
 
-const db_get = (key, table) => new Promise((resolve, reject) => {
+const db_get = (db, { key, table }) => new Promise((resolve, reject) => {
     const transaction = db.transaction([table], "readonly");
     const obj_store = transaction.objectStore(table);
 
@@ -58,7 +67,7 @@ const db_get = (key, table) => new Promise((resolve, reject) => {
     request.onerror = (e) => { resolve(null) }
 })
 
-const db_get_all = (table) => new Promise((resolve, reject) => {
+const db_get_all = (db, { table }) => new Promise((resolve, reject) => {
     const transaction = db.transaction([table], "readonly")
     const obj_store = transaction.objectStore(table)
 
@@ -68,7 +77,7 @@ const db_get_all = (table) => new Promise((resolve, reject) => {
 })
 
 const is_reminding = async (name, date) => {
-    const reminder = await db_get(name + '-' + date, 'reminders')
+    const reminder = await use_db(db_get, {key: name + '-' + date, table: 'reminders'})
     
     if (reminder) return true
     return false
@@ -83,11 +92,11 @@ const set_reminder = async (name, date, desc) => {
         name, date, desc
     }
 
-    await db_add(new_reminder, 'reminders')
+    await use_db(db_add, {obj: new_reminder, table: 'reminders'})
     return true // this is to say perm was available
 }
 const remove_reminder = async (name, date) => {
-    await db_delete(name + '-' + date, 'reminders')
+    await use_db(db_delete, {key: name + '-' + date, table: 'reminders'})
 }
 
 const happening_today = (date_string, compare_to = null) => {
@@ -98,7 +107,7 @@ const happening_today = (date_string, compare_to = null) => {
 }
 
 const remind = async () => {
-    const reminders = await db_get_all('reminders')
+    const reminders = await use_db(db_get_all, {table: 'reminders'})
 
     for (let i = 0; i < reminders.length; i++) {
         const reminder = reminders[i];
@@ -108,6 +117,6 @@ const remind = async () => {
         if (!happening_today(date, "Thu Jul 04 2024")) continue
     
         notify(`${reminder.name} is happening today!`, reminder.desc)
-        await db_delete(reminder.key, 'reminders')
+        await use_db(db_delete, {key: reminder.key, table: 'reminders'})
     }
 }
