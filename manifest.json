@@ -102,8 +102,8 @@
       ]
     }
   ],
-  "theme_color": "#ff",
-  "bacground_color": "#fff",
+  "theme_color": "#000",
+  "bacground_color": "#000",
   "display": "standalone",
   "orientation": "portrait"
 }

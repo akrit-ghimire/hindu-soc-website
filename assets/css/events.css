@@ -81,6 +81,7 @@
     width: 100%;
     padding: calc(var(--padding-inner) * .75) var(--padding-inner);
     cursor: pointer;
+    user-select: none;
 }
 .button:hover { opacity: .8; }
 .button:active { opacity: .7; }

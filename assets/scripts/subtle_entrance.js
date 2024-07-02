@@ -14,4 +14,4 @@ const start_observer = () => {
     const hidden_elements = document.querySelectorAll('.hide')
     hidden_elements.forEach(el => observer.observe(el))
 }
-start_observer()
+// start_observer()

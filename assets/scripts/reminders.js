@@ -114,7 +114,7 @@ const remind = async () => {
         const date = reminder.date 
     
         console.warn('hardcoded val here')
-        if (!happening_today(date, "Thu Jul 04 2024")) continue
+        if (!happening_today(date)) continue
     
         notify(`${reminder.name} is happening today!`, reminder.desc)
         await use_db(db_delete, {key: reminder.key, table: 'reminders'})

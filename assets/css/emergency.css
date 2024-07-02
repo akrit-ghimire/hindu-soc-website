@@ -5,8 +5,12 @@ body {
     background-color: var(--purple-darkest);
     width: 100%;
     min-height: 100vh;
-    padding: 2rem;
+    padding: 4rem 2rem;
     height: 100%;
+    background-image: url('/assets/icons-svg/art/about/background-two.svg');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: auto;
 }
 
 img {
